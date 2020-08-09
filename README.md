@@ -37,4 +37,4 @@ Some results can suprise you, even if you are well experienced!!
 We would like to thank [Sune N Jespersen](https://pure.au.dk/portal/en/persons/sune-jespersen(f4d1a00c-677b-4aca-b9b0-c7ad14f1fddc).html) for the fruitful discussion of simulation implementation and the theory of diffusion.
 
 ## License
-This project is licensed under the [LICENSE](https://github.com/NYU-DiffusionMRI/monte-carlo-simulation-1D-membrane/blob/master/LICENSE).
+This project is licensed under the [LICENSE](https://github.com/NYU-DiffusionMRI/monte-carlo-simulation-3D-RMS/blob/master/LICENSE).
