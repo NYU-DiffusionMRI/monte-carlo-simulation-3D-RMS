@@ -1,15 +1,15 @@
 # Realistic Microstructure Simulator (RMS): Monte Carlo simulations of diffusion in 3D cells (CUDA C++)
 
-## Part 1: 
-The code implements 3d Monte Carlo simulations originally developed in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the power spectrum of realistic axonal shapes along axons (Figure 1) and diffusivity and kurtosis time-dependence (Figure 2) in [Lee, et al., Communications Biology 2020](https://doi.org/10.1038/s42003-020-1050-x).
+## Part 1: Diffusivity time-dependence along realistic white matter axons
+The code implements 3d Monte Carlo simulations originally developed in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the power spectrum of realistic axonal shapes along white matter axons of a mouse brain (Figure 1) and the diffusivity and kurtosis time-dependence along axons (Figure 2) in [Lee, et al., Communications Biology 2020](https://doi.org/10.1038/s42003-020-1050-x).
 
 * **Demo 1, power spectrum:** Calculate the power spectrum of realistic axonal shapes along axons (Figure 1f).
 * **Demo 2, artificial shape generation:** Generation of artificially designed microgeometry based on realistic axons (Figure 2a).
 * **Demo 3, simulations:** Perform Monte Carlos simulations of diffusion 3d cell geometries (Figure 2b-h). The code is implemented in CUDA C++, and you need an Nvidia GPU to run the code.
 * **Demo 4, analysis:** Calculate diffusivity and kurtosis time-dependence based on displacement cumulants and diffusion signals.
 
-## Part 2: (This part will be updated soon.)
-The code implements of 1d, 2d, and 3d Monte Carlo simulations for the educational purpose, with details in the Appendices A and B in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the bias caused by the following two particle-membrane interactions: equal-step-length random leap (ERL) and rejection sampling. This part justifies the choice of elastic collision in the RMS. The codes in this part are implemented in Matlab.
+## Part 2: Why elastic collision is the most reliable particle-membrane interaction? (This part will be updated soon.)
+The code implements 1d, 2d, and 3d Monte Carlo simulations for the educational purpose, with details in the Appendices A and B in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the bias caused by the following two particle-membrane interactions: equal-step-length random leap (ERL) and rejection sampling. This part justifies the choice of elastic collision in the RMS. The codes in this part are implemented in Matlab.
 
 * **Demo 1, equal-step-length random leap:** Perform simple Monte Carlo simulations of diffusion between 1d, 2d, and 3d impermeable parallel planes, and show the inhomogeneous particle density around membranes and bias in the diffusivity transverse and parallel to the planes caused by the ERL.
 * **Demo 2, rejection sampling:** Perform simple Monte Carlo simulations of diffusion between 1d, 2d, and 3d (1) impermeable parallel planes to show the bias in the diffusivity parallel to membranes caused by rejection sampling, and (2) permeable parallel planes to demonstrate the compatibility of rejection sampling with the simulation of water exchange.
