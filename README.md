@@ -1,7 +1,7 @@
 # Realistic Microstructure Simulator (RMS): Monte Carlo simulations of diffusion in 3D cells (CUDA C++)
 
 ## Part 1: Diffusivity time-dependence along realistic white matter axons
-The code implements 3d Monte Carlo simulations originally developed in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the power spectrum of realistic axonal shapes along white matter axons of a mouse brain (Figure 1) and the diffusivity and kurtosis time-dependence along axons (Figure 2) in [Lee, et al., Communications Biology 2020](https://doi.org/10.1038/s42003-020-1050-x).
+The code implements 3d Monte Carlo simulations originally developed in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the power spectrum of realistic axonal shapes along white matter axons (Figure 1) and the diffusivity and kurtosis time-dependence along axons (Figure 2) in [Lee, et al., Communications Biology 2020](https://doi.org/10.1038/s42003-020-1050-x). The white matter axons were segmented from the corpus callosum of a mouse brain, with details in [Lee, et al., Brain Structure and Function](https://doi.org/10.1007/s00429-019-01844-6) and our another Github toolbox [Random Walker (RaW) segmentation].
 
 * **Demo 1, power spectrum:** Calculate the power spectrum of realistic axonal shapes along axons (Figure 1f).
 * **Demo 2, artificial shape generation:** Generation of artificially designed microgeometry based on realistic axons (Figure 2a).
