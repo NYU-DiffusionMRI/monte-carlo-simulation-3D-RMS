@@ -8,6 +8,8 @@ The code implements 3d Monte Carlo simulations originally developed in [Lee, et 
 * **Demo 3, simulations:** Perform Monte Carlos simulations of diffusion 3d cell geometries (Figure 2b-h). The code is implemented in CUDA C++, and you need an Nvidia GPU to run the code.
 * **Demo 4, analysis:** Calculate diffusivity and kurtosis time-dependence based on displacement cumulants and diffusion signals.
 
+The simulation of wide pulse sequence and permeability-based exchange will be released soon.
+
 ## Part 2: Why elastic collision is the most reliable particle-membrane interaction? (This part will be updated soon.)
 The code implements 1d, 2d, and 3d Monte Carlo simulations for the educational purpose, with details in the Appendices A and B in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the bias caused by the following two particle-membrane interactions: equal-step-length random leap (ERL) and rejection sampling. This part justifies the choice of elastic collision in the RMS. The codes in this part are implemented in Matlab.
 
