@@ -1,10 +1,12 @@
 % Part 1: Diffusivity time-dependence along realistic white matter axons
-% Demo 1: Power spectrum
+% Demo 1: Power spectrum (Lee, et al., Commun Biol 2020)
 %
 % The purpose of this demontration includes:
-% 1. Calculate the power spectrum of realistic axonal shapes along axons
-%    (Fig. 2a in Lee, et al., Commun Biol 2020).
-% 2. Visualize axon shapes (Fig. 6 in Lee, et al., Commun Biol 2020).
+% 1. Calculating the power spectrum of realistic axonal shapes along axons
+%    (Fig. 1).
+% 2. Visualizing axon shapes (Fig. 6).
+% 3. Calculating the surface area and volume of mitochondria (Supplementary
+%    Fig. 1).
 %
 % Reference: 
 % Lee, et al., Communications Biology 2020 (doi:10.1038/s42003-020-1050-x)
