@@ -29,6 +29,11 @@ Some results can suprise you, even if you are well experienced!!
 
 * **Realistic axonal shape**
   - [Lee, et al., Brain Structure and Function](https://doi.org/10.1007/s00429-019-01844-6)
+  - [Electron microscopy data](https://www.cai2r.net/resources/software/intra-axonal-space-segmented-3d-scanning-electron-microscopy-mouse-brain-genu)
+  - [Random Walker (RaW) segmentation](https://github.com/NYU-DiffusionMRI/RaW-seg)
+  
+* **Watson Distribution sampling**
+  - [SphericalDistributionsRand](https://www.mathworks.com/matlabcentral/fileexchange/52398-sphericaldistributionsrand)
 
 ## Authors
 * [Hong-Hsi Lee](http://www.diffusion-mri.com/people/hong-hsi-lee)
