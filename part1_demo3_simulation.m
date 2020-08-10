@@ -3,7 +3,7 @@
 %
 % The purpose of this demontration includes:
 % 1. Performing simulations of diffusion in four geometries in Part 1 Demo
-% 3 (Fig. 2b-f).
+%    3 (Fig. 2b-f).
 %
 % Reference: 
 % Lee, et al., Communications Biology 2020 (doi:10.1038/s42003-020-1050-x)

@@ -51,7 +51,7 @@ classdef setupRMS < handle
             fprintf(fid,sprintf('%u\n',NPix2));
             fprintf(fid,sprintf('%u\n',NPix3));
             fclose(fid);
-
+            
             D = X.diffusivity;
             fid = fopen(fullfile(target,'diffusivity.txt'),'w');
             fprintf(fid,sprintf('%.8f\n',D));
@@ -61,6 +61,11 @@ classdef setupRMS < handle
             fid = fopen(fullfile(target,'T2.txt'),'w');
             fprintf(fid,sprintf('%.8f\n',T2));
             fclose(fid);
+            
+            step_size_max = sqrt(6*max(D)*dt);
+            if step_size_max >= voxel_size
+                sprintf('Warning, the step size is larger than the voxel size.\n');
+            end
         end
     end
     

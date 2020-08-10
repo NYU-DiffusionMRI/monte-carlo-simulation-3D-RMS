@@ -3,8 +3,8 @@ classdef readRMS < handle
     properties (GetAccess = public, SetAccess = public)
         sig0;
         sig;
-        TD;
-        dtime; Tstep; NPar; res;
+        TD; D0; T2;
+        dtime; Tstep; NPar; voxel_size;
         dx2t; dx4t;
         bval; bvec;
     end
@@ -31,8 +31,10 @@ classdef readRMS < handle
             this.dtime = param(1);
             this.Tstep = param(2);
             this.NPar = param(3);
-            this.res = param(4);
+            this.voxel_size = param(4);
             this.TD = load(fullfile(root,'diff_time.txt'));
+            this.D0 = load(fullfile(root,'diffusivity.txt'));
+            this.T2 = load(fullfile(root,'T2.txt'));
             
             this.bval = load(fullfile(root,'bval.txt'));
             this.bvec = load(fullfile(root,'bvec.txt'));
@@ -72,8 +74,6 @@ classdef readRMS < handle
                 dx4g = (Ki+3).*dx2g.^2;
                 dt(i,1:6) = ( n2\dx2g ).';
                 dt(i,7:21) = ( n4\dx4g ).';
-%                 this.dx2tShl(i,1:6) = ( b(:,1:6)\dx2g ).';
-%                 this.dx4tShl(i,7:21) = ( b(:,7:end)\dx4g ).';
             end
         end
         
@@ -89,18 +89,8 @@ classdef readRMS < handle
             b = [b, (bsqd6 .* prod(reshape(grad(:,this.W_ind),[],15,4),3))*diag(this.W_cnt)];
             
             % Linear least square
-            dtTmp = b\log(sig + eps).';
-            dt = DKI.W2K(dtTmp);
-%             this.dt_lls = DKI.W2K(dtTmp);
-%             
-%             % Calculate DTI and DKI metric
-%             eigval = DKI.eig(this.dt_lls);
-%             this.adSig = DKI.ad(eigval).';
-%             this.rdSig = DKI.rd(eigval).';
-%             this.mdSig = DKI.md(eigval).';
-%             this.akSig = DKI.ak(this.dt_lls).';
-%             this.rkSig = DKI.rk(this.dt_lls).';
-%             this.mkSig = DKI.mk(this.dt_lls).';
+            dt = b\log(sig + eps).';
+%             dt = DKI.W2K(dtTmp);
         end
                 
         function [K,D] = akc_mom(this,n)
