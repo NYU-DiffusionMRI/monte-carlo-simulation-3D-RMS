@@ -77,7 +77,7 @@ for i = 1:4
     end
 end
 
-%% Compile and run simulations
+%% Method 1: Compile CUDA C++ code and run simulations
 
 root_cuda = fullfile(root,'hpc_code','lib');
 for i = 1:4
@@ -90,4 +90,26 @@ for i = 1:4
         system('rm -f main.cu main_cuda');
     end
 end
+
+%% Method 2: Create a shell and run the shell in Terminal
+
+root_cuda = fullfile(root,'hpc_code','lib');
+fileID = fopen(fullfile(root,'hpc_code','input','job.sh'),'w');
+fprintf(fileID,'#!/bin/bash\n');
+for i = 1:4
+    for j = 1:numel(file(i).fiber)
+        targetj = fullfile(target{i},sprintf('setup%03u',j));
+        fprintf(fileID,sprintf('cd %s\n',targetj));
+        fprintf(fileID,sprintf('cp -a %s .\n',fullfile(root_cuda,'main.cu')));
+        fprintf(fileID,'nvcc -arch=sm_70 main.cu -o main_cuda\n');
+        fprintf(fileID,'./main_cuda\n');
+        fprintf(fileID,'rm -f main.cu main_cuda\n\n');
+    end
+end
+fclose(fileID);
+
+% In terminal, please get to the directory to the job.sh file and run the 
+% shell with "sh job.sh"
+
+
 
