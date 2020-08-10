@@ -1,12 +1,12 @@
 # Realistic Microstructure Simulator (RMS): Monte Carlo simulations of diffusion in 3D cells (CUDA C++)
 
 ## Part 1: Diffusivity time-dependence along realistic white matter axons
-The code implements 3d Monte Carlo simulations originally developed in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the power spectrum of realistic axonal shapes along white matter axons (Figure 1) and the diffusivity and kurtosis time-dependence along axons (Figure 2) in [Lee, et al., Communications Biology 2020](https://doi.org/10.1038/s42003-020-1050-x). The white matter axons were segmented from the corpus callosum of a mouse brain, with details in [Lee, et al., Brain Structure and Function](https://doi.org/10.1007/s00429-019-01844-6) and our another Github toolbox [Random Walker (RaW) segmentation](https://github.com/NYU-DiffusionMRI/RaW-seg).
+The code implements 3d Monte Carlo simulations originally developed in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the power spectrum of realistic axonal shapes along white matter axons (Fig. 1) and the diffusivity and kurtosis time-dependence along axons (Fig. 2) in [Lee, et al., Communications Biology 2020](https://doi.org/10.1038/s42003-020-1050-x). The white matter axons were segmented from the corpus callosum of a mouse brain, with details in [Lee, et al., Brain Structure and Function](https://doi.org/10.1007/s00429-019-01844-6) and our another Github toolbox [Random Walker (RaW) segmentation](https://github.com/NYU-DiffusionMRI/RaW-seg).
 
-* **Demo 1, power spectrum:** Calculate the power spectrum of realistic axonal shapes along axons (Figure 1f).
-* **Demo 2, artificial shape generation:** Generation of artificially designed microgeometry based on realistic axons (Figure 2a).
-* **Demo 3, simulations:** Perform Monte Carlos simulations of diffusion 3d cell geometries (Figure 2b-h). The code is implemented in CUDA C++, and you need an Nvidia GPU to run the code.
-* **Demo 4, analysis:** Calculate diffusivity and kurtosis time-dependence based on displacement cumulants and diffusion signals.
+* **Demo 1, power spectrum:** Calculate the power spectrum of realistic axonal shapes along axons (Fig. 1, Fig. 6, and Supplementary Fig. 1).
+* **Demo 2, artificial shape generation:** Generation of artificially designed microgeometry based on realistic axons (Fig. 2a).
+* **Demo 3, simulations:** Perform Monte Carlos simulations of diffusion 3d cell geometries. The code is implemented in CUDA C++, and you need an Nvidia GPU to run the code.
+* **Demo 4, analysis:** Calculate diffusivity and kurtosis time-dependence based on displacement cumulants (Fig. 2b-h) and diffusion signals.
 
 The simulation of wide pulse sequence and permeability-based exchange will be released soon.
 
