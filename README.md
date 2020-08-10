@@ -6,9 +6,9 @@ The code implements 3d Monte Carlo simulations originally developed in [Lee, et 
 * **Demo 1, power spectrum:** Calculate the power spectrum of realistic axonal shapes along axons (Fig. 1, Fig. 6, and Supplementary Fig. 1).
 * **Demo 2, artificial shape generation:** Generation of artificially designed microgeometry based on realistic axons (Fig. 2a).
 * **Demo 3, simulations:** Perform Monte Carlos simulations of diffusion 3d cell geometries. The code is implemented in CUDA C++, and you need an Nvidia GPU to run the code.
-* **Demo 4, analysis:** Calculate diffusivity and kurtosis time-dependence based on displacement cumulants (Fig. 2b-h) and diffusion signals.
+* **Demo 4, analysis:** Calculate diffusivity and kurtosis time-dependence based on displacement cumulants (Fig. 2b-h).
 
-The simulation of wide pulse sequence and permeability-based exchange will be released soon.
+The simulation of wide pulse sequence and permeability-based exchange will be released in another repository.
 
 ## Part 2: Why elastic collision is the most reliable particle-membrane interaction? (This part will be updated soon.)
 The code implements 1d, 2d, and 3d Monte Carlo simulations for the educational purpose, with details in the Appendices A and B in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the bias caused by the following two particle-membrane interactions: equal-step-length random leap (ERL) and rejection sampling. This part justifies the choice of elastic collision in the RMS. The codes in this part are implemented in Matlab.
@@ -29,6 +29,11 @@ Some results can suprise you, even if you are well experienced!!
 
 * **Realistic axonal shape**
   - [Lee, et al., Brain Structure and Function](https://doi.org/10.1007/s00429-019-01844-6)
+  - [Electron microscopy data](https://www.cai2r.net/resources/software/intra-axonal-space-segmented-3d-scanning-electron-microscopy-mouse-brain-genu)
+  - [Random Walker (RaW) segmentation](https://github.com/NYU-DiffusionMRI/RaW-seg)
+  
+* **Watson Distribution sampling**
+  - [SphericalDistributionsRand](https://www.mathworks.com/matlabcentral/fileexchange/52398-sphericaldistributionsrand)
 
 ## Authors
 * [Hong-Hsi Lee](http://www.diffusion-mri.com/people/hong-hsi-lee)
