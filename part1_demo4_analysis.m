@@ -28,12 +28,11 @@ target{2} = fullfile(root,'hpc_code','input','II_realistic_axon');
 target{3} = fullfile(root,'hpc_code','input','III_caliber_variation');
 target{4} = fullfile(root,'hpc_code','input','IV_undulation');
 
-rr = readRMS();
 sim = struct([]);
 for i = 1:numel(target)
     files = dir(fullfile(target{i},'setup*'));
     for j = 1:numel(files)
-        sim(i,j).data = readRMS(files(j).name);
+        sim(i,j).data = readRMS(fullfile(target{i},files(j).name));
     end
 end
 save(fullfile(root,'hpc_code','result','example.mat'),'sim');
