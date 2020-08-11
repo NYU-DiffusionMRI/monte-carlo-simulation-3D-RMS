@@ -35,6 +35,7 @@ for i = 1:numel(target)
         sim(i,j).data = readRMS(fullfile(target{i},files(j).name));
     end
 end
+mkdir(fullfile(root,'hpc_code','result'));
 save(fullfile(root,'hpc_code','result','example.mat'),'sim');
 
 %% Analyze packing
@@ -47,7 +48,7 @@ for i = 1:numel(target)
         fiber(i,j).CV_radius = std(ri)/mean(ri);
         fiber(i,j).volume = nnz(fiberi(j).shape)*fiberi(j).voxel_size^3;
         if i == 1
-            fiber(i,j).mitochondiral_volume = ...
+            fiber(i,j).mitochondrial_volume = ...
                 nnz(fiberi(j).shape==2)*fiberi(j).voxel_size^3;
         end
     end
@@ -67,27 +68,35 @@ load(fullfile(root,'hpc_code','result','example.mat'));
 figure('unit','inch','position',[0 0 12 8]);
 cmap = colormap('lines');
 clear h
+Dinf = zeros(size(sim,2),1);
 for i = 1:size(sim,1)
-    Di = []; Kj = [];
+    Di = []; Ki = [];
     for j = 1:size(sim,2)
         simj = sim(i,j).data;
         n = [0 0 1];
         [Kj, Dj] = simj.akc_mom(n);
         Di = cat(2,Di,Dj);
         Ki = cat(2,Ki,Kj);
+        
+        if i == 1
+            tlist = 200:800;
+            X = [ones(numel(tlist),1) 1./sqrt(t(tlist))]\Dj(tlist);
+            Dinf(i) = X(1);
+        end
     end
     fi = [fiber(i,:).volume_fraction];
     D = sum(fi.*Di,2);
-    K = 3*( sum(fi.*Di.^2,2) - D.^2 ) ./ D.^2 + sum(fi.*Di.^2.*Ki)./D.^2;
+    K = 3*( sum(fi.*Di.^2,2) - D.^2 ) ./ D.^2 + sum(fi.*Di.^2.*Ki,2)./D.^2;
     t = simj.TD;
+    D0 = simj.D0(2);
     
     subplot(121);
     hold on;
-    plot(t,D,'.','MarkerSize',8,'Color',cmap(i,:));
+    plot(1./sqrt(t),D/D0,'.','MarkerSize',8,'Color',cmap(i,:));
     
-    subplot(121);
+    subplot(122);
     hold on;
-    h(i) = plot(t,K,'.','MarkerSize',8,'Color',cmap(i,:));
+    h(i) = plot(1./sqrt(t),K,'.','MarkerSize',8,'Color',cmap(i,:));
 end
 
 subplot(121);
@@ -132,14 +141,14 @@ Ntheta = numel(kappa);          % # polar angle
 Nphi = 10;                      % # azimuthal angle
 
 simi = sim(1,:);
-figure;
+figure('unit','inch','position',[0 0 12 8]);
 cmap = colormap('lines');
 cmap = cmap([1 5:7],:);
 clear h
 for i = 1:Ntheta
     % Sampling directions based on the Watson distribution
     rng(0);
-    if k == 1
+    if i == 1
         n = repmat([0 0 1],numel(simi)*Nphi,1);
     else
         n = randWatson(numel(simi)*Nphi, mu, kappa(i));
@@ -165,14 +174,16 @@ for i = 1:Ntheta
     % Calculate diffusivity and kurtosis
     D = dx2/2./t;
     K = dx4./dx2.^2-3;
+    t = simi(1).data.TD;
+    D0 = simi(1).data.D0(2);
     
     subplot(121);
     hold on;
-    plot(t,D,'.','MarkerSize',8,'Color',cmap(i,:));
+    plot(1./sqrt(t),D/D0,'.','MarkerSize',8,'Color',cmap(i,:));
     
-    subplot(121);
+    subplot(122);
     hold on;
-    h(i) = plot(t,K,'.','MarkerSize',8,'Color',cmap(i,:));
+    h(i) = plot(1./sqrt(t),K,'.','MarkerSize',8,'Color',cmap(i,:));
 end
 
 subplot(121);
@@ -204,17 +215,15 @@ Dinf = zeros(Ntheta,2);         % Bulk diffusivity at long time
 c = zeros(Ntheta,2);            % Strength of restrictions
 
 simi = sim(1,:);
-cmap = colormap('lines');
-cmap = cmap([1 5:7],:);
 for i = 1:Ntheta
     % Sampling directions based on the Watson distribution
     rng(0);
-    if k == 1
+    if i == 1
         n = repmat([0 0 1],numel(simi)*Nphi,1);
     else
         n = randWatson(numel(simi)*Nphi, mu, kappa(i));
     end
-    cos2(k) = mean(n(:,3).^2);
+    cos2(i) = mean(n(:,3).^2);
     
     % Calculate displacement cumulants
     dx2i = []; dx4i = [];
@@ -228,6 +237,7 @@ for i = 1:Ntheta
         dx2i = cat(2,dx2i,dx2j);
     end
     dx2 = sum(fi.*dx2i,2);
+    t = simi(1).data.TD;
     
     % Calculate diffusivity
     D = dx2/2./t;

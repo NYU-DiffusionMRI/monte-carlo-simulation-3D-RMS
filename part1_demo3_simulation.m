@@ -58,7 +58,7 @@ for i = 1:4
     if i ==1
         % The null compartment must have a diffusivity = 0.
         % The T2 relaxation must be a positive number for all compartments
-        X.diffusivity = [0 2 2/13];     % Diffusivity in each compartment (micron2/ms)
+        X.diffusivity = [0 2 2/15];     % Diffusivity in each compartment (micron2/ms)
         X.T2_relaxation = [80 80 20];   % T2 relaxation time in each compartment (ms)
     else
         X.diffusivity = [0 2 2];        % Diffusivity in each compartment (micron2/ms)
