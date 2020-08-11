@@ -51,7 +51,7 @@ sr = setupRMS();
 for i = 1:4
     clear X
     X.time_step = 2e-4;                 % Time of each step (ms)
-    X.step_num = 1e3;                   % # step
+    X.step_num = 5e5;                   % # step
     X.particle_num = 1e3;               % # particle
     X.comp_num = 3;                     % # compartments
     X.voxel_size = file(1).fiber(1).voxel_size;     % Voxel size (micron)

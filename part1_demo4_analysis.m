@@ -80,6 +80,7 @@ for i = 1:size(sim,1)
         
         if i == 1
             tlist = 200:800;
+            t = simj.TD;
             X = [ones(numel(tlist),1) 1./sqrt(t(tlist))]\Dj(tlist);
             Dinf(i) = X(1);
         end
