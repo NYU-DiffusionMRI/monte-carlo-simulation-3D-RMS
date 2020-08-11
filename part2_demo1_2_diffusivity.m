@@ -178,6 +178,7 @@ xlabel('$2\times\frac{1}{8}\delta s$ ($\mu$m)','interpreter','latex','fontsize',
 ylabel('$a-a^\prime$ ($\mu$m)','interpreter','latex','fontsize',20);
 
 %% Plot diffusivity parallel to membranes
+% Applying > 1e6 particles is strongly suggested for a reliable result
 load(fullfile(root,'ERL_diffusivity.mat'));
 D0 = diffusivity;
 a = membrane_distance;
@@ -209,7 +210,7 @@ zeta = zeros(numel(time_step),1);
 for i = 1:numel(time_step)
     D = AD3d(:,i);
     t = t3d(:,i);
-    [~,It] = min(abs(t-5));
+    [~,It] = min(abs(t-8));
     tlist = It:numel(t);
     zeta(i) = mean(D(tlist))/D0 - 1;
     dx = sqrt(6*D0*time_step(i));

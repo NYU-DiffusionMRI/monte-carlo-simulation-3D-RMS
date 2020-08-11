@@ -35,7 +35,7 @@ density2d = zeros(numel(time_step),bin_num);
 density3d = zeros(numel(time_step),bin_num);
 tic;
 for i = 1:numel(time_step)
-    X.particle_num = 1e4;           % # particle
+    X.particle_num = 1e5;           % # particle
     X.time_max = time_max;          % Maximal diffusion time (ms)
     X.diffusivity = diffusivity;    % Intrinsic diffusivity (micron2/ms)
     X.time_step = time_step(i);     % Time for each step (ms)
@@ -52,6 +52,7 @@ save(fullfile(root,'ERL_density.mat'),...
     'time_max','diffusivity','time_step','membrane_distance');
 
 %% Plot particle density around impermeable membranes
+% Applying > 1e6 particles is strongly suggested for a reliable result
 load(fullfile(root,'ERL_density.mat'));
 
 figure('unit','inch','position',[0 0 10 15]);
