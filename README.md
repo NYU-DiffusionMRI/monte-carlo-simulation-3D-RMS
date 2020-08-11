@@ -10,11 +10,11 @@ The code implements 3d Monte Carlo simulations originally developed in [Lee, et 
 
 The simulation of wide pulse sequence and permeability-based exchange will be released in another repository.
 
-## Part 2: Why elastic collision is the most reliable particle-membrane interaction? (This part will be updated soon.)
+## Part 2: Why elastic collision is the most reliable particle-membrane interaction?
 The code implements 1d, 2d, and 3d Monte Carlo simulations for the educational purpose, with details in the Appendices A and B in [Lee, et al., Journal of Neuroscience Methods, 2020](), demonstrating the bias caused by the following two particle-membrane interactions: equal-step-length random leap (ERL) and rejection sampling. This part justifies the choice of elastic collision in the RMS. The codes in this part are implemented in Matlab.
 
 * **Demo 1, equal-step-length random leap:** Perform simple Monte Carlo simulations of diffusion between 1d, 2d, and 3d impermeable parallel planes, and show the inhomogeneous particle density around membranes and bias in the diffusivity transverse and parallel to the planes caused by the ERL.
-* **Demo 2, rejection sampling:** Perform simple Monte Carlo simulations of diffusion between 1d, 2d, and 3d (1) impermeable parallel planes to show the bias in the diffusivity parallel to membranes caused by rejection sampling, and (2) permeable parallel planes to demonstrate the compatibility of rejection sampling with the simulation of water exchange.
+* **Demo 2, rejection sampling (will be updated shortly):** Perform simple Monte Carlo simulations of diffusion between 1d, 2d, and 3d (1) impermeable parallel planes to show the bias in the diffusivity parallel to membranes caused by rejection sampling, and (2) permeable parallel planes to demonstrate the compatibility of rejection sampling with the simulation of water exchange.
 
 These are good exercises if you just start your own MC simulation codes.
 Some results can suprise you, even if you are well experienced!!
