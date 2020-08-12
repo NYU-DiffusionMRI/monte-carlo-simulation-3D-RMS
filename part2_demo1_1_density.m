@@ -23,9 +23,12 @@ addpath(fullfile(root,'analysis'));
 %% Simulation of particle density around impermeable membranes
 
 % Diffusion between impermeable parallel planes in 1d, 2d and 3d
+% Impermeable parallel planes are placed at x = 0 and a
+% Particles are initialized homogeneously between x = 0 and a
+% Particle density is recorded between x = 0 and a
 time_max = 10;                      % Maximal diffusion time (ms)
 diffusivity = 2;                    % Intrinsic diffusivity (micron2/ms)
-time_step = [0.02 0.04 0.06 0.08 0.1].^2/2/D0;      % Time for each step (ms)
+time_step = [0.02 0.04 0.06 0.08 0.1].^2/2/diffusivity;      % Time for each step (ms)
 bin_num = 1000;                     % # bin to calculate particle density
 membrane_distance = 1;              % Distance bewteen parallel planes (micron)
 
@@ -65,7 +68,7 @@ lgtxt = cell(numel(time_step),1);
 ia = interaction();
 clear h
 for i = 1:numel(time_step)
-    h(i) = ia.theory_density1d(diffusivity,time_step(i),bin_num,membrane_distance);
+    h(i) = ia.theory_ERLdensity1d(diffusivity,time_step(i),bin_num,membrane_distance);
     set(h(i),'linewidth',1,'color',cmap(i,:));
     hr = xline(sqrt(2*diffusivity*time_step(i)));
     set(hr,'color',cmap(i,:),'linestyle','--','linewidth',1);
@@ -84,13 +87,12 @@ ylabel('$\tilde{\rho}(h)$','interpreter','latex','fontsize',20);
 % Simulation in 1d
 subplot(322);
 hold on;
-bin_num = size(density1d,2);
 scale = 0.25;                       % Scale to resize the density array
 cmap = colormap('lines');
 ia = interaction();
 clear h
 for i = 1:numel(time_step)
-    h(i) = ia.plotdensity(density1d(i,:),bin_num,membrane_distance,scale);
+    h(i) = ia.plotdensity(density1d(i,:),membrane_distance,scale);
     set(h(i),'linewidth',1,'color',cmap(i,:),'markersize',10);
     hr = xline(sqrt(2*diffusivity*time_step(i)));
     set(hr,'color',cmap(i,:),'linestyle','--','linewidth',1);
@@ -111,7 +113,7 @@ lgtxt = cell(numel(time_step),1);
 ia = interaction();
 clear h
 for i = 1:numel(time_step)
-    h(i) = ia.theory_density2d(diffusivity,time_step(i),bin_num,membrane_distance);
+    h(i) = ia.theory_ERLdensity2d(diffusivity,time_step(i),bin_num,membrane_distance);
     set(h(i),'linewidth',1,'color',cmap(i,:));
     hr = xline(sqrt(4*diffusivity*time_step(i)));
     set(hr,'color',cmap(i,:),'linestyle','--','linewidth',1);
@@ -130,13 +132,12 @@ ylabel('$\tilde{\rho}(h)$','interpreter','latex','fontsize',20);
 % Simulation in 2d
 subplot(324);
 hold on;
-bin_num = size(density2d,2);
 scale = 0.25;                       % Scale to resize the density array
 cmap = colormap('lines');
 ia = interaction();
 clear h
 for i = 1:numel(time_step)
-    h(i) = ia.plotdensity(density2d(i,:),bin_num,membrane_distance,scale);
+    h(i) = ia.plotdensity(density2d(i,:),membrane_distance,scale);
     set(h(i),'linewidth',1,'color',cmap(i,:),'markersize',10);
     hr = xline(sqrt(4*diffusivity*time_step(i)));
     set(hr,'color',cmap(i,:),'linestyle','--','linewidth',1);
@@ -151,13 +152,13 @@ ylabel('$\tilde{\rho}(h)$','interpreter','latex','fontsize',20);
 
 % Theory in 3d
 subplot(325); hold on;
-bin_num = size(density2d,2);
+bin_num = size(density3d,2);
 cmap = colormap('lines');
 lgtxt = cell(numel(time_step),1);
 ia = interaction();
 clear h
 for i = 1:numel(time_step)
-    h(i) = ia.theory_density3d(diffusivity,time_step(i),bin_num,membrane_distance);
+    h(i) = ia.theory_ERLdensity3d(diffusivity,time_step(i),bin_num,membrane_distance);
     set(h(i),'linewidth',1,'color',cmap(i,:));
     hr = xline(sqrt(6*diffusivity*time_step(i)));
     set(hr,'color',cmap(i,:),'linestyle','--','linewidth',1);
@@ -176,13 +177,12 @@ ylabel('$\tilde{\rho}(h)$','interpreter','latex','fontsize',20);
 % Simulation in 3d
 subplot(326);
 hold on;
-bin_num = size(density3d,2);
 scale = 0.25;                       % Scale to resize the density array
 cmap = colormap('lines');
 ia = interaction();
 clear h
 for i = 1:numel(time_step)
-    h(i) = ia.plotdensity(density3d(i,:),bin_num,membrane_distance,scale);
+    h(i) = ia.plotdensity(density3d(i,:),membrane_distance,scale);
     set(h(i),'linewidth',1,'color',cmap(i,:),'markersize',10);
     hr = xline(sqrt(6*diffusivity*time_step(i)));
     set(hr,'color',cmap(i,:),'linestyle','--','linewidth',1);

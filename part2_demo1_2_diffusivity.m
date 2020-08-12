@@ -4,7 +4,7 @@
 %    2020; Xing et al., MRM 2013)
 %
 % The purpose of this demontration includes:
-% 1. Perform simple Monte Carlo simulations of diffusion between 1d, 2d, 
+% 2. Perform simple Monte Carlo simulations of diffusion between 1d, 2d, 
 %    and 3d impermeable parallel planes, and show the bias in the 
 %    diffusivity transverse and parallel to the membranes due to
 %    inhomogeneous particle density caused by the ERL.
@@ -21,12 +21,14 @@ root = pwd;
 % Load simulation tool
 addpath(fullfile(root,'analysis'));
 
-%% Simulation of particle density around impermeable membranes
+%% Simulation of diffusivity transverse and parallel to membranes
 
 % Diffusion between impermeable parallel planes in 1d, 2d and 3d
+% Impermeable parallel planes are placed at x = 0 and a
+% Particles are initialized homogeneously between x = 0 and a
 time_max = 10;                      % Maximal diffusion time (ms)
 diffusivity = 2;                    % Intrinsic diffusivity (micron2/ms)
-time_step = [0.02 0.04 0.06 0.08 0.1].^2/2/D0;      % Time for each step (ms)
+time_step = [0.02 0.04 0.06 0.08 0.1].^2/2/diffusivity;      % Time for each step (ms)
 membrane_distance = 1;              % Distance bewteen parallel planes (micron)
 
 ia = interaction();
