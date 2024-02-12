@@ -25,7 +25,7 @@ Some results can suprise you, even if you are well experienced!!
   - [Novikov, et al., Nature Physics, 2011](https://doi.org/10.1038/nphys1936)
   - [Fieremans and Lee, NeuroImage 2018](https://doi.org/10.1016/j.neuroimage.2018.06.046)
   - [Lee, et al., Communications Biology 2020](https://doi.org/10.1038/s42003-020-1050-x)
-  - [Lee, et al., Journal of Neuroscience Methods 2020]()
+  - [Lee, et al., Journal of Neuroscience Methods 2020](https://doi.org/10.1016/j.jneumeth.2020.109018)
 
 * **Realistic axonal shape**
   - [Lee, et al., Brain Structure and Function](https://doi.org/10.1007/s00429-019-01844-6)
